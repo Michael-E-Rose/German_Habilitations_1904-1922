@@ -1,0 +1,1 @@
+List of named habilitations from all available issues of the ''Deutscher Universitätskalender'' (German University Calendar). Other issues print just the aggregate numbers. Obtained via Google Books or Bayerische Staats Bibliothek (signature: H.lit.p. 396 o).
