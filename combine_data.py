@@ -18,12 +18,13 @@ UMLAUTS = str.maketrans({"ä": "a", "ö": "o", "ü": "u", "ß": "ss"})  # to sor
 
 
 def university_from(text, universities, spellings):
-    """'früher Königsbg.' → 'Königsberg'; places not in the list stay as printed.
+    """'früher Königsbg.', '(früher Greifsw.)' → 'Königsberg', 'Greifswald'; places not in the list stay as printed.
     Notes like 'in Basel beurl.' or 'zugleich Lektor in Marburg' are no move."""
     if re.search(r"beurl|zugleich", text):
         return ""
-    name = re.sub(r"^früher\s*", "", text).strip(" .")
-    name = spellings.get(name, name)
+    name = re.sub(r"^\(?früher\s*", "", text).strip(" .()")
+    if name in spellings:
+        return spellings[name]
     if name in universities:
         return name
     hits = {uni for uni in universities if uni.startswith(name[:5])}
